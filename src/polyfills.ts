@@ -61,8 +61,8 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
-import '@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js';
+// import '@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js';
 
-if (!window['customElements']) {
-  document.write(`<script src="/assets/webcomponentsjs/webcomponents-loader.js"></script>`);
-}
+// if (!window['customElements']) {
+//   document.write(`<script src="/assets/webcomponentsjs/webcomponents-loader.js"></script>`);
+// }
