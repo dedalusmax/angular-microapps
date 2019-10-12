@@ -23,17 +23,14 @@
   <nav class="subnav">
     <ul class="nav">
         <li class="nav-item">
-            <a class="nav-link active" href="#">Dashboard</a>
+            <a class="nav-link active" [routerLink]="['/dashboard']" routerLinkActive="router-link-active">Dashboard</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Heating</a>
+            <a class="nav-link" [routerLink]="['/workflow']" routerLinkActive="router-link-active">Workflow</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Ventilation</a>
+            <a class="nav-link" href="#">Plants</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Air Conditioning</a>
-      </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Management</a>
     </li>
