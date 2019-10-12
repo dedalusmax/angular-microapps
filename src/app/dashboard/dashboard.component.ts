@@ -19,9 +19,9 @@ export class DashboardComponent implements OnInit {
   private _add(element: string): void {
 
     const el = document.createElement(element);
-    el['partno'] = 'EY-123233RT';
 
     el.setAttribute('class', 'clr-col-lg-4 clr-col-12');
+    el.setAttribute('partno', `EY-${Math.round(Math.random() * 100000) }-RND`);
 
     const content = document.getElementById('content');
     content.appendChild(el);
