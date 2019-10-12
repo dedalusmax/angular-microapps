@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LazyLoaderService } from '../lazy-loader.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,13 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private lazyLoaderService: LazyLoaderService) { }
 
   ngOnInit() {
   }
 
-  addWidget(): void {
+  addDevice(): void {
     this._add('app-device');
+  }
+
+  addWorkflow() {
+    this.lazyLoaderService.loadModule(() =>
+      import('../workflow/workflow.module').then(m => m.WorkflowModule)
+    );
   }
 
   private _add(element: string): void {
