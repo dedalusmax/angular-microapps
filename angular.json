@@ -155,6 +155,41 @@
           }
         }
       }
+    },
+    "plant-editor": {
+      "projectType": "library",
+      "root": "projects/plant-editor",
+      "sourceRoot": "projects/plant-editor/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/plant-editor/tsconfig.lib.json",
+            "project": "projects/plant-editor/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/plant-editor/src/test.ts",
+            "tsConfig": "projects/plant-editor/tsconfig.spec.json",
+            "karmaConfig": "projects/plant-editor/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/plant-editor/tsconfig.lib.json",
+              "projects/plant-editor/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "angular-microapps"

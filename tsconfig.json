@@ -17,7 +17,15 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "plant-editor": [
+        "dist/plant-editor"
+      ],
+      "plant-editor/*": [
+        "dist/plant-editor/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
