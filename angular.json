@@ -51,6 +51,9 @@
               "node_modules/@clr/ui/clr-ui.min.css",
               "src/styles.scss"
             ],
+            "lazyModules": [
+              "src/app/workflow/workflow.module"
+            ],
             "scripts": [
               "node_modules/@webcomponents/custom-elements/custom-elements.min.js",
               "node_modules/@clr/icons/clr-icons.min.js",
