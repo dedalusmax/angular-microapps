@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
 
     const el = document.createElement('app-device');
 
-    el.setAttribute('class', 'clr-col-lg-4 clr-col-12');
+    el.setAttribute('class', 'clr-col-lg-3 clr-col-8');
     el.setAttribute('partno', `EY-${Math.round(Math.random() * 100000) }-RND`);
 
     const content = document.getElementById('content');

@@ -13,10 +13,7 @@ import { createCustomElement } from '@angular/elements';
     WorkflowRoutingModule,
     ClarityModule
   ],
-  // entryComponents: [
-  //   WorkflowComponent
-  // ],
-  bootstrap: [
+  entryComponents: [
     WorkflowComponent
   ]
 })
