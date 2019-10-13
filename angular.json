@@ -157,36 +157,123 @@
       }
     },
     "plant-editor": {
-      "projectType": "library",
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "root": "projects/plant-editor",
       "sourceRoot": "projects/plant-editor/src",
-      "prefix": "lib",
+      "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "tsConfig": "projects/plant-editor/tsconfig.lib.json",
-            "project": "projects/plant-editor/ng-package.json"
+            "outputPath": "dist/plant-editor",
+            "index": "projects/plant-editor/src/index.html",
+            "main": "projects/plant-editor/src/main.ts",
+            "polyfills": "projects/plant-editor/src/polyfills.ts",
+            "tsConfig": "projects/plant-editor/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/plant-editor/src/favicon.ico",
+              "projects/plant-editor/src/assets"
+            ],
+            "styles": [
+              "projects/plant-editor/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/plant-editor/src/environments/environment.ts",
+                  "with": "projects/plant-editor/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "plant-editor:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "plant-editor:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "plant-editor:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "projects/plant-editor/src/test.ts",
+            "polyfills": "projects/plant-editor/src/polyfills.ts",
             "tsConfig": "projects/plant-editor/tsconfig.spec.json",
-            "karmaConfig": "projects/plant-editor/karma.conf.js"
+            "karmaConfig": "projects/plant-editor/karma.conf.js",
+            "assets": [
+              "projects/plant-editor/src/favicon.ico",
+              "projects/plant-editor/src/assets"
+            ],
+            "styles": [
+              "projects/plant-editor/src/styles.scss"
+            ],
+            "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/plant-editor/tsconfig.lib.json",
-              "projects/plant-editor/tsconfig.spec.json"
+              "projects/plant-editor/tsconfig.app.json",
+              "projects/plant-editor/tsconfig.spec.json",
+              "projects/plant-editor/e2e/tsconfig.json"
             ],
             "exclude": [
               "**/node_modules/**"
             ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/plant-editor/e2e/protractor.conf.js",
+            "devServerTarget": "plant-editor:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "plant-editor:serve:production"
+            }
           }
         }
       }
