@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LazyLoaderService } from '../lazy-loader.service';
 import { LazyLoaderOldService } from '../lazy-loader-old.service';
+import { ExternalLoaderService } from '../external-loader.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,7 +10,10 @@ import { LazyLoaderOldService } from '../lazy-loader-old.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private lazyLoaderService: LazyLoaderOldService) { }
+  constructor(
+    private lazyLoaderService: LazyLoaderOldService,
+    private externalLoaderService: ExternalLoaderService
+    ) { }
 
   ngOnInit() {
   }
@@ -28,11 +32,7 @@ export class DashboardComponent implements OnInit {
   addWorkflow() {
 
     this.lazyLoaderService.load('src/app/workflow/workflow.module#WorkflowModule').then(_ => {
-
-      const el = document.createElement('app-workflow');
-
-      const content = document.getElementById('content');
-      content.appendChild(el);
+      this._add('app-workflow');
     });
 
 
@@ -49,5 +49,18 @@ export class DashboardComponent implements OnInit {
     //     content.appendChild(el);
     //   })
     // );
+  }
+
+  addExternal() {
+    this.externalLoaderService.load();
+    this._add('app-plant-editor');
+  }
+
+  private _add(componentName: string) {
+
+    const el = document.createElement(componentName);
+
+    const content = document.getElementById('content');
+    content.appendChild(el);
   }
 }
