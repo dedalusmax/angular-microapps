@@ -4,6 +4,7 @@ import { ClarityModule } from '@clr/angular';
 import { DeviceComponent } from './device/device.component';
 import { createCustomElement } from '@angular/elements';
 import { XComponentNgElementStrategyFactory } from '../elements/component-element-strategy.factory';
+import { CustomElements } from '../elements/custom-elements';
 
 @NgModule({
   imports: [
@@ -22,7 +23,7 @@ import { XComponentNgElementStrategyFactory } from '../elements/component-elemen
 })
 export class DevicesModule {
 
-  constructor(injector: Injector) {
+  constructor(injector: Injector, customElements: CustomElements) {
 
     const el = createCustomElement(DeviceComponent, { injector,
       strategyFactory: new XComponentNgElementStrategyFactory(DeviceComponent, injector) });

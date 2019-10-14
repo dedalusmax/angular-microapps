@@ -5,6 +5,7 @@ import { WorkflowRoutingModule } from './workflow-routing.module';
 import { WorkflowComponent } from './workflow.component';
 import { ClarityModule } from '@clr/angular';
 import { createCustomElement } from '@angular/elements';
+import { CustomElements } from '../elements/custom-elements';
 
 @NgModule({
   declarations: [WorkflowComponent],
@@ -19,10 +20,10 @@ import { createCustomElement } from '@angular/elements';
 })
 export class WorkflowModule {
 
-  constructor(injector: Injector) {
+  constructor(injector: Injector, customElements: CustomElements) {
 
     const el = createCustomElement(WorkflowComponent, { injector });
-    customElements.define('app-workflow', el);
+    customElements.define('el-workflow', el);
   }
 
 }

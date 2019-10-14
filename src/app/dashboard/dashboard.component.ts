@@ -40,7 +40,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     this.loading = true;
     this.lazyLoaderService.load('src/app/workflow/workflow.module#WorkflowModule').then(_ => {
-      this._add('app-workflow');
+      this._add('el-workflow');
       this.loading = false;
     });
 

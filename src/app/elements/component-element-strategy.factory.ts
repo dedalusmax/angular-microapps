@@ -95,12 +95,11 @@ export class ComponentNgElementStrategy implements NgElementStrategy {
     // moved elsewhere in the DOM
     this.scheduledDestroyFn = scheduler.schedule(() => {
       if (this.componentRef) {
-        // tslint:disable-next-line:no-non-null-assertion
         this.componentRef !.destroy();
         this.componentRef = null;
       }
     }, DESTROY_DELAY);
-    // this.scheduledDestroyFn();
+    this.scheduledDestroyFn();
   }
 
   /**
