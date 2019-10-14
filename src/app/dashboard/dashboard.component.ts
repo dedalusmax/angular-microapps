@@ -10,8 +10,6 @@ import { ExternalLoaderService } from '../external-loader.service';
 })
 export class DashboardComponent implements OnInit, OnDestroy {
 
-  loading = false;
-
   constructor(
     private lazyLoaderService: LazyLoaderOldService,
     private externalLoaderService: ExternalLoaderService
@@ -37,14 +35,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   addLazyLoaded() {
-
-    this.loading = true;
     this.lazyLoaderService.load('src/app/workflow/workflow.module#WorkflowModule').then(_ => {
       this._add('el-workflow');
-      this.loading = false;
     });
-
-
 
   //   this.lazyLoaderService.loadModule(() =>
   //   import('../workflow/workflow.module').then(m => m.WorkflowModule)
@@ -61,10 +54,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   addExternal() {
-    this.loading = true;
     this.externalLoaderService.load();
     this._add('app-plant-editor');
-    this.loading = false;
    }
 
   private _add(componentName: string) {
