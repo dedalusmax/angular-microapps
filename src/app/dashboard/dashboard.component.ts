@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { LazyLoaderService } from '../lazy-loader.service';
 import { LazyLoaderOldService } from '../lazy-loader-old.service';
 import { ExternalLoaderService } from '../external-loader.service';
@@ -8,7 +8,7 @@ import { ExternalLoaderService } from '../external-loader.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
 
   loading = false;
 
@@ -18,6 +18,11 @@ export class DashboardComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    console.log('DashboardComponent: ngOnInit');
+  }
+
+  ngOnDestroy(): void {
+    console.log('DashboardComponent: ngOnDestroy');
   }
 
   addClassic(): void {
