@@ -15,4 +15,11 @@ export class DeviceComponent implements OnInit {
   ngOnInit() {
   }
 
+  connect() {
+    dispatchEvent(new CustomEvent('connectDevice', { detail: this }));
+  }
+
+  close() {
+    dispatchEvent(new CustomEvent('closeDevice', { detail: this }));
+  }
 }

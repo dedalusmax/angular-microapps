@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { LazyLoaderService } from '../lazy-loader.service';
 import { LazyLoaderOldService } from '../lazy-loader-old.service';
 import { ExternalLoaderService } from '../external-loader.service';
+import { DeviceComponent } from '../devices/device/device.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,14 +14,40 @@ export class DashboardComponent implements OnInit, OnDestroy {
   constructor(
     private lazyLoaderService: LazyLoaderOldService,
     private externalLoaderService: ExternalLoaderService
-    ) { }
+    ) {
+    }
 
   ngOnInit() {
     console.log('DashboardComponent: ngOnInit');
+
+    addEventListener('configure', this.onConfigure);
+    addEventListener('connectDevice', this.onConnectDevice);
+    addEventListener('closeDevice', this.onCloseDevice);
   }
 
   ngOnDestroy(): void {
     console.log('DashboardComponent: ngOnDestroy');
+
+    removeEventListener('configure', this.onConfigure);
+    removeEventListener('connectDevice', this.onConnectDevice);
+    removeEventListener('closeDevice', this.onCloseDevice);
+  }
+
+  onConfigure(event) {
+    console.log('onConfigure raised', event);
+  }
+
+  onConnectDevice(event) {
+    console.log('onConnectDevice raised', event);
+  }
+
+  onCloseDevice(event: any) {
+    console.log('onConnectDevice raised', event);
+    const component = event.detail as DeviceComponent;
+    const el = document.querySelector(`app-device[partno='${component.partno}']`);
+    if (el) {
+      el.remove();
+    }
   }
 
   addClassic(): void {

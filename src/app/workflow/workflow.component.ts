@@ -12,4 +12,7 @@ export class WorkflowComponent implements OnInit {
   ngOnInit() {
   }
 
+  configure() {
+    dispatchEvent(new CustomEvent<boolean>('configure', { }));
+  }
 }
