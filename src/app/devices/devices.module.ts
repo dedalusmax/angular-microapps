@@ -25,9 +25,9 @@ export class DevicesModule {
 
   constructor(injector: Injector, customElements: CustomElements) {
 
-    // const el = createCustomElement(DeviceComponent, { injector,
-    //   strategyFactory: new XComponentNgElementStrategyFactory(DeviceComponent, injector) });
-    const el = createCustomElement(DeviceComponent, { injector });
+    const el = createCustomElement(DeviceComponent, { injector,
+      strategyFactory: new XComponentNgElementStrategyFactory(DeviceComponent, injector) });
+    // const el = createCustomElement(DeviceComponent, { injector });
     customElements.define('app-device', el);
   }
 
