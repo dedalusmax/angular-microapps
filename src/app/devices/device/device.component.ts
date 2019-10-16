@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class DeviceComponent implements OnInit {
 
-  @Input() partno: number;
+  @Input() partno: string;
   @Input() manufacturer = 'Sauter';
 
   constructor() { }

@@ -21,7 +21,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
     console.log('DashboardComponent: ngOnInit');
 
     addEventListener('configure', this.onConfigure);
-    addEventListener('connectDevice', this.onConnectDevice);
     addEventListener('closeDevice', this.onCloseDevice);
   }
 
@@ -29,16 +28,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
     console.log('DashboardComponent: ngOnDestroy');
 
     removeEventListener('configure', this.onConfigure);
-    removeEventListener('connectDevice', this.onConnectDevice);
     removeEventListener('closeDevice', this.onCloseDevice);
   }
 
   onConfigure(event) {
     console.log('onConfigure raised', event);
-  }
-
-  onConnectDevice(event) {
-    console.log('onConnectDevice raised', event);
   }
 
   onCloseDevice(event: any) {

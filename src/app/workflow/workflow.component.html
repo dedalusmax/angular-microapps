@@ -1,49 +1,65 @@
-<ul class="clr-timeline clr-timeline-horizontal">
-    <li class="clr-timeline-step disabled">
-      <div class="clr-timeline-step-header">11:59 AM</div>
-      <clr-icon shape="circle" aria-label="Not started"></clr-icon>
-      <div class="clr-timeline-step-body">
-        <span class="clr-timeline-step-title">No device</span>
-        <span class="clr-timeline-step-description">Device enrollment defined.</span>
-      </div>
-    </li>
-    <li class="clr-timeline-step">
-      <div class="clr-timeline-step-header">12:15 AM</div>
-      <clr-icon shape="dot-circle" aria-current="true" aria-label="Current"></clr-icon>
-      <div class="clr-timeline-step-body">
-        <span class="clr-timeline-step-title">Add device</span>
-        <span class="clr-timeline-step-description">
-      Device provisioning via Azure portal. Root CA certificate (X.509) requested.
-    </span>
-      </div>
-    </li>
-    <li class="clr-timeline-step">
+<div class="content-container">
+  <nav class="sidenav">
+    <section class="sidenav-content">
+      <span class="nav-link active">
+        {{ partno }}
+      </span>
+    </section>
+  </nav>
+  <div class="content-area">
+    <ul class="clr-timeline clr-timeline-horizontal">
+      <li class="clr-timeline-step disabled">
+        <div class="clr-timeline-step-header">11:59 AM</div>
+        <clr-icon shape="circle" aria-label="Not started"></clr-icon>
+        <div class="clr-timeline-step-body">
+          <span class="clr-timeline-step-title">No device</span>
+          <span class="clr-timeline-step-description">Device enrollment defined.</span>
+        </div>
+      </li>
+      <li *ngIf="steps >= 2" class="clr-timeline-step">
+        <div class="clr-timeline-step-header">12:15 AM</div>
+        <clr-icon shape="dot-circle" aria-current="true" aria-label="Current"></clr-icon>
+        <div class="clr-timeline-step-body">
+          <span class="clr-timeline-step-title">Add device</span>
+          <span class="clr-timeline-step-description">
+            Device provisioning via Azure portal. Root CA certificate (X.509) requested.
+          </span>
+        </div>
+      </li>
+      <li *ngIf="steps >= 3" class="clr-timeline-step">
         <div class="clr-timeline-step-header">12:18 AM</div>
         <clr-icon shape="success-standard" aria-label="Completed"></clr-icon>
         <div class="clr-timeline-step-body">
           <span class="clr-timeline-step-title">Device connected</span>
-          <span class="clr-timeline-step-description">Device can be accessed by using Device Twins or directly by calling device methods through Azure Devices API.
-              <button class="btn btn-sm" (click)="configure()">configure</button>
-            </span>
+          <span class="clr-timeline-step-description">Device can be accessed by using Device Twins or directly by
+            calling
+            device methods through Azure Devices API.
+            <button class="btn btn-sm">configure</button>
+          </span>
         </div>
       </li>
-    <li class="clr-timeline-step">
-      <div class="clr-timeline-step-header">1:00 PM</div>
-      <clr-spinner clrMedium aria-label="In progress">Fetching data</clr-spinner>
-      <div class="clr-timeline-step-body">
-        <span class="clr-timeline-step-title">Data acquisition</span>
-        <span class="clr-timeline-step-description">
-          Fetching telemetry data of the device via Event Hub. Azure function will be triggered when table storage blob is created with new telemetry.
-    </span>
-      </div>
-    </li>
-
-    <li class="clr-timeline-step">
-      <div class="clr-timeline-step-header">5:02 PM</div>
-      <clr-icon shape="error-standard" aria-label="Error"></clr-icon>
-      <div class="clr-timeline-step-body">
-        <span class="clr-timeline-step-title">Device disconnected</span>
-        <span class="clr-timeline-step-description">Data zapped from the storage. All historical data is available from the Azure Time Series database.</span>
-      </div>
-    </li>
+      <li *ngIf="steps >= 4" class="clr-timeline-step">
+        <div class="clr-timeline-step-header">1:00 PM</div>
+        <clr-spinner clrMedium aria-label="In progress">Fetching data</clr-spinner>
+        <div class="clr-timeline-step-body">
+          <span class="clr-timeline-step-title">Data acquisition</span>
+          <span class="clr-timeline-step-description">
+            Fetching telemetry data of the device via Event Hub. Azure function will be triggered when table storage
+            blob is
+            created with new telemetry.
+          </span>
+        </div>
+      </li>
+      <li *ngIf="steps >= 5" class="clr-timeline-step">
+        <div class="clr-timeline-step-header">5:02 PM</div>
+        <clr-icon shape="error-standard" aria-label="Error"></clr-icon>
+        <div class="clr-timeline-step-body">
+          <span class="clr-timeline-step-title">Device disconnected</span>
+          <span class="clr-timeline-step-description">Data zapped from the storage. All historical data is available
+            from
+            the Azure Time Series database.</span>
+        </div>
+      </li>
     </ul>
+  </div>
+</div>

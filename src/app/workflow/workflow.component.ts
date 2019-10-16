@@ -1,18 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-workflow',
   templateUrl: './workflow.component.html',
   styleUrls: ['./workflow.component.scss']
 })
-export class WorkflowComponent implements OnInit {
+export class WorkflowComponent implements OnInit, OnDestroy {
 
-  constructor() { }
+  @Input() steps: number;
+  @Input() partno: string;
 
-  ngOnInit() {
+  @ViewChild('btnConfigure', { static: true}) btnConfigure: ElementRef;
+
+  constructor() {
+    this.partno = 'Unknkown device';
+    this.steps = 5;
   }
 
-  configure() {
-    dispatchEvent(new CustomEvent<boolean>('configure', { }));
+  ngOnInit() {
+    addEventListener('workflowStep', this.onWorkflowStep.bind(this));
+  }
+
+  ngOnDestroy(): void {
+    removeEventListener('workflowStep', this.onWorkflowStep);
+  }
+
+  onWorkflowStep(event) {
+    console.log('onWorkflowStep raised', event);
+    this.steps++;
   }
 }
