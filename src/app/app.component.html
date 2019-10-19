@@ -1,12 +1,9 @@
 <div class="main-container">
-  <!-- <div class="alert alert-app-level">
-      ...
-  </div> -->
   <header class="header-6">
     <div class="branding">
       <a href="#" class="nav-link">
-        <clr-icon shape="vmw-app"></clr-icon>
-        <span class="title">Micro Apps</span>
+        <clr-icon shape="devices"></clr-icon>
+        <span class="title">Micro Devices</span>
       </a>
     </div>
     <form class="search">
@@ -15,9 +12,16 @@
       </label>
     </form>
     <div class="header-actions">
-      <a href="..." class="nav-link nav-icon" aria-label="settings">
-        <clr-icon shape="cog"></clr-icon>
-      </a>
+      <clr-dropdown>
+        <button class="nav-icon" clrDropdownTrigger aria-label="toggle settings menu">
+            <clr-icon shape="cog"></clr-icon>
+            <clr-icon shape="caret down"></clr-icon>
+        </button>
+        <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+          <a href="https://micro-frontends.org/" target="_blank" clrDropdownItem>About Micro Frontends</a>
+          <a href="https://github.com/dedalusmax/angular-microapps" target="_blank" clrDropdownItem>View Source on GitHub</a>
+        </clr-dropdown-menu>
+    </clr-dropdown>
     </div>
   </header>
   <nav class="subnav">
