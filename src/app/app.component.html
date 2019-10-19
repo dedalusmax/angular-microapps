@@ -27,19 +27,10 @@
   <nav class="subnav">
     <ul class="nav">
         <li class="nav-item">
-            <a class="nav-link active" href="#">Dashboard</a>
+            <a class="nav-link active" href="#" routerLinkActive="router-link-active">Dashboard</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Heating</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Ventilation</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Air Conditioning</a>
-      </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Management</a>
+        <a class="nav-link" [routerLink]="['/help']" routerLinkActive="router-link-active">Help</a>
     </li>
 </ul>
 </nav>

@@ -8,11 +8,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ManagementModule } from './management/management.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DevicesModule } from './devices/devices.module';
+import { HelpComponent } from './help/help.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent
+    DashboardComponent,
+    HelpComponent
   ],
   imports: [
     BrowserModule,
