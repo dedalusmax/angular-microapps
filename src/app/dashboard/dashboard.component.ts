@@ -14,7 +14,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
   }
 
-  addDevice(): void {
+  addClassic(): void {
 
     const el = document.createElement('app-device');
 
@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit {
     content.appendChild(el);
   }
 
-  addWorkflow() {
+  addLazyLoaded() {
 
     this.lazyLoaderService.load('src/app/workflow/workflow.module#WorkflowModule').then(_ => {
 
