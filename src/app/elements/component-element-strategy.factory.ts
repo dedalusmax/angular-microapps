@@ -99,6 +99,7 @@ export class ComponentNgElementStrategy implements NgElementStrategy {
         this.componentRef = null;
       }
     }, DESTROY_DELAY);
+    console.warn('scheduledDestroyFn called on disconnect.');
     this.scheduledDestroyFn();
   }
 
