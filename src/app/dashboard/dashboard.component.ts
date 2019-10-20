@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LazyLoaderService } from '../lazy-loader.service';
+import { LazyLoaderOldService } from '../lazy-loader-old.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,23 +9,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private lazyLoaderService: LazyLoaderOldService) { }
 
   ngOnInit() {
   }
 
-  addWidget(): void {
-    this._add('app-device');
-  }
+  addDevice(): void {
 
-  private _add(element: string): void {
+    const el = document.createElement('app-device');
 
-    const el = document.createElement(element);
-
-    el.setAttribute('class', 'clr-col-lg-4 clr-col-12');
-    el.setAttribute('partno', `EY-${Math.round(Math.random() * 100000) }-RND`);
+    el.setAttribute('class', 'clr-col-lg-3 clr-col-8');
+    el.setAttribute('partno', `EY-${Math.round(Math.random() * 100000)}-RND`);
 
     const content = document.getElementById('content');
     content.appendChild(el);
+  }
+
+  addWorkflow() {
+
+    this.lazyLoaderService.load('src/app/workflow/workflow.module#WorkflowModule').then(_ => {
+
+      const el = document.createElement('app-workflow');
+
+      const content = document.getElementById('content');
+      content.appendChild(el);
+    });
   }
 }
