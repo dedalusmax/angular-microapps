@@ -9,6 +9,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { DevicesModule } from './devices/devices.module';
 import { PlantsComponent } from './plants/plants.component';
 import { ManagementComponent } from './management/management.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { ManagementComponent } from './management/management.component';
     AppRoutingModule,
     ClarityModule,
     BrowserAnimationsModule,
-    DevicesModule
+    DevicesModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   schemas: [

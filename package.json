@@ -14,7 +14,8 @@
     "bundle:ext": "ng build --project plant-editor --single-bundle",
     "copy:bundle": "cpr dist/plant-editor/main-es2015.js src/assets/plant-editor.bundle.js -o",
     "copy:assets": "cpr dist/plant-editor/assets src/assets -o",
-    "copy:ext": "npm run copy:bundle && npm run copy:assets"
+    "copy:ext": "npm run copy:bundle && npm run copy:assets",
+    "start:pwa": "http-server -c-1 dist/angular-microapps"
   },
   "private": true,
   "dependencies": {
@@ -26,7 +27,9 @@
     "@angular/forms": "~8.2.9",
     "@angular/platform-browser": "~8.2.9",
     "@angular/platform-browser-dynamic": "~8.2.9",
+    "@angular/pwa": "^0.803.12",
     "@angular/router": "~8.2.9",
+    "@angular/service-worker": "~8.2.9",
     "@clr/angular": "^2.2.2",
     "@clr/icons": "2.2.2",
     "@clr/ui": "2.2.2",
