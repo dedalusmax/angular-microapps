@@ -8,7 +8,7 @@ import { LazyLoaderOldService } from '../lazy-loader-old.service';
 })
 export class ManagementComponent implements OnInit, OnDestroy {
 
-  partno = 'RC-123456-MGMT';
+  partno = 'Media Tek 3620';
 
   constructor(private lazyLoaderService: LazyLoaderOldService) { }
 
